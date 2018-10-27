@@ -2,7 +2,7 @@
 
 const bg = document.querySelector(".bg");
 const sl = document.querySelector(".spotlight");
-const walk = 10;
+const walk = 25;
 const friction = 0.8;
 
 function swoosh(e) {
@@ -29,6 +29,28 @@ document.body.addEventListener("mousemove", swoosh);
 
 const panels = Array.from(document.querySelectorAll(".panel"));
 
+function prevPanel() {
+  const openPanelIndex = panels.findIndex(panel =>
+    panel.classList.contains("show")
+  );
+  if (openPanelIndex === 0) return;
+  panels.forEach((panel, i) => {
+    panel.classList.remove("show");
+    if (i === openPanelIndex - 1) panel.classList.add("show");
+  });
+}
+
+function nextPanel() {
+  const openPanelIndex = panels.findIndex(panel =>
+    panel.classList.contains("show")
+  );
+  if (openPanelIndex === panels.length - 1) return;
+  panels.forEach((panel, i) => {
+    panel.classList.remove("show");
+    if (i === openPanelIndex + 1) panel.classList.add("show");
+  });
+}
+
 function swipe(e) {
   const openPanelIndex = panels.findIndex(panel =>
     panel.classList.contains("show")
@@ -37,26 +59,23 @@ function swipe(e) {
     case "ArrowLeft":
     case "ArrowUp":
     case "a":
-      if (openPanelIndex === 0) return;
-      panels.forEach((panel, i) => {
-        panel.classList.remove("show");
-        if (i === openPanelIndex - 1) panel.classList.add("show");
-      });
-      break;
-
+      return prevPanel();
     case "ArrowRight":
     case "ArrowDown":
     case "d":
-      if (openPanelIndex === panels.length - 1) return;
-      panels.forEach((panel, i) => {
-        panel.classList.remove("show");
-        if (i === openPanelIndex + 1) panel.classList.add("show");
-      });
-      break;
-
+      return nextPanel();
     default:
       return;
   }
 }
 
-document.addEventListener("keyup", swipe);
+function flick(e) {
+  const { offsetWidth: width } = this;
+  console.log(e.screenX > width / 2);
+  console.log({ width: width / 2 });
+  if (e.screenX > width / 2) nextPanel();
+  else prevPanel();
+}
+
+document.body.addEventListener("keyup", swipe);
+document.body.addEventListener("click", flick);

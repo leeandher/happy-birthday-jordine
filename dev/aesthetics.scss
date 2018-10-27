@@ -65,15 +65,63 @@ $accent-color: #00cccc;
 
 @keyframes light {
   0% {
-    text-shadow: 0 0 0px #ebbb1f;
+    color: #ebbb1f;
   }
   100% {
-    text-shadow: 0 0 15px #ebbb1f;
+    text-shadow: 0 0 10px #ebbb1f;
   }
 }
 
 .light {
   animation: light 0.8s cubic-bezier(0.39, 0.575, 0.565, 1) infinite alternate;
+}
+
+@keyframes hula {
+  0% {
+    transform: translate(-20px, 0);
+  }
+  12% {
+    transform: translate(-15px, -15px);
+  }
+  25% {
+    transform: translate(0, -20px);
+  }
+  37% {
+    transform: translate(15px, -15px);
+  }
+  50% {
+    transform: translate(20px, 0);
+  }
+  62% {
+    transform: translate(15px, 15px);
+  }
+  75% {
+    transform: translate(0, 20px);
+  }
+  82% {
+    transform: translate(-15px, 15px);
+  }
+  100% {
+    transform: translate(-20px, 0);
+  }
+}
+.hula {
+  color: white;
+  border-radius: 15px;
+  box-shadow: white 0 0 20px;
+  animation: hula 0.8s linear infinite forwards;
+}
+
+@keyframes flow {
+  0% {
+    transform: scale(1) rotate(20deg);
+  }
+  100% {
+    transform: scale(1.75) rotate(-20deg);
+  }
+}
+.flow {
+  animation: flow 2s ease-in-out infinite alternate;
 }
 
 @keyframes shake {
@@ -88,6 +136,27 @@ $accent-color: #00cccc;
 .shake {
   font-size: 3rem !important;
   animation: shake 0.25s linear infinite alternate;
+}
+
+@keyframes spotlight {
+  0% {
+    transform: rotateX(-50deg) translate(-20px, 25px);
+  }
+  25% {
+    transform: rotateY(50deg) translate(25px, -30px);
+  }
+  50% {
+    transform: rotateX(50deg) translate(20px, 25px);
+  }
+  75% {
+    transform: rotateY(-50deg) translate(-25px, 30px);
+  }
+  100% {
+    transform: rotateX(-50deg) translate(-20px, 25px);
+  }
+}
+.spotlight {
+  animation: spotlight 5s linear infinite forwards;
 }
 
 //SASS
