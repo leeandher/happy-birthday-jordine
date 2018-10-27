@@ -20,7 +20,7 @@
             filter: hue-rotate(360deg); } }
 
 .colorize {
-  color: #00cccc;
+  color: #92ffff;
   -webkit-animation: colorize 2s infinite forwards linear;
           animation: colorize 2s infinite forwards linear; }
 
@@ -69,6 +69,64 @@
   -webkit-animation: heart-beat 1s infinite alternate cubic-bezier(1, 0.04, 0.51, 1.45);
           animation: heart-beat 1s infinite alternate cubic-bezier(1, 0.04, 0.51, 1.45); }
 
+@-webkit-keyframes dance {
+  0% {
+    -webkit-transform: rotate(-15deg) skewY(20deg);
+            transform: rotate(-15deg) skewY(20deg); }
+  100% {
+    -webkit-transform: rotate(15deg) skewY(-20deg);
+            transform: rotate(15deg) skewY(-20deg); } }
+
+@keyframes dance {
+  0% {
+    -webkit-transform: rotate(-15deg) skewY(20deg);
+            transform: rotate(-15deg) skewY(20deg); }
+  100% {
+    -webkit-transform: rotate(15deg) skewY(-20deg);
+            transform: rotate(15deg) skewY(-20deg); } }
+
+.dance {
+  background: rgba(255, 255, 255, 0.2);
+  -webkit-animation: dance 2s ease-in-out infinite alternate;
+          animation: dance 2s ease-in-out infinite alternate; }
+
+@-webkit-keyframes light {
+  0% {
+    text-shadow: 0 0 0px #ebbb1f; }
+  100% {
+    text-shadow: 0 0 15px #ebbb1f; } }
+
+@keyframes light {
+  0% {
+    text-shadow: 0 0 0px #ebbb1f; }
+  100% {
+    text-shadow: 0 0 15px #ebbb1f; } }
+
+.light {
+  -webkit-animation: light 0.8s cubic-bezier(0.39, 0.575, 0.565, 1) infinite alternate;
+          animation: light 0.8s cubic-bezier(0.39, 0.575, 0.565, 1) infinite alternate; }
+
+@-webkit-keyframes shake {
+  0% {
+    -webkit-transform: rotate(-5deg);
+            transform: rotate(-5deg); }
+  100% {
+    -webkit-transform: rotate(5deg);
+            transform: rotate(5deg); } }
+
+@keyframes shake {
+  0% {
+    -webkit-transform: rotate(-5deg);
+            transform: rotate(-5deg); }
+  100% {
+    -webkit-transform: rotate(5deg);
+            transform: rotate(5deg); } }
+
+.shake {
+  font-size: 3rem !important;
+  -webkit-animation: shake 0.25s linear infinite alternate;
+          animation: shake 0.25s linear infinite alternate; }
+
 * {
   box-sizing: border-box;
   font-family: "Satisfy";
@@ -96,9 +154,10 @@ body {
             transform: scale(1.1); }
   .wrapper .card {
     border: 3px solid #fff;
-    margin-top: 10vh;
+    margin: 10vh auto;
     box-shadow: inset 0 0 25px 4px #fff;
-    display: flex; }
+    display: flex;
+    max-width: 1000px; }
 
 .panel {
   height: 80vh;
@@ -112,14 +171,13 @@ body {
   transition: 0.25s ease; }
 
 .panel.show {
-  border-color: lightcoral;
   flex: 1; }
 
-.hero .text {
-  font-weight: bold;
-  text-align: center;
-  font-size: 7rem;
-  line-height: 1; }
-
-.hero span {
-  transition: all 0.5s linear; }
+.hero {
+  -webkit-transform: skew(10deg);
+          transform: skew(10deg); }
+  .hero .text {
+    font-weight: bold;
+    text-align: center;
+    font-size: 6rem;
+    padding: 15px 25px; }

@@ -2,6 +2,7 @@
 $bg: "./makeup/foundation.jpg";
 $font: "./makeup/eyeliner.ttf";
 $text-color: #fff;
+$accent-color: #00cccc;
 
 @font-face {
   font-family: "Satisfy";
@@ -18,7 +19,7 @@ $text-color: #fff;
   }
 }
 .colorize {
-  color: #00cccc;
+  color: #92ffff;
   animation: colorize 2s infinite forwards linear;
 }
 
@@ -30,7 +31,6 @@ $text-color: #fff;
     transform: rotateX(360deg);
   }
 }
-
 .spin {
   animation: spin 3s infinite forwards cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
@@ -48,6 +48,46 @@ $text-color: #fff;
 .heart-beat {
   color: palevioletred;
   animation: heart-beat 1s infinite alternate cubic-bezier(1, 0.04, 0.51, 1.45);
+}
+
+@keyframes dance {
+  0% {
+    transform: rotate(-15deg) skewY(20deg);
+  }
+  100% {
+    transform: rotate(15deg) skewY(-20deg);
+  }
+}
+.dance {
+  background: rgba(255, 255, 255, 0.2);
+  animation: dance 2s ease-in-out infinite alternate;
+}
+
+@keyframes light {
+  0% {
+    text-shadow: 0 0 0px #ebbb1f;
+  }
+  100% {
+    text-shadow: 0 0 15px #ebbb1f;
+  }
+}
+
+.light {
+  animation: light 0.8s cubic-bezier(0.39, 0.575, 0.565, 1) infinite alternate;
+}
+
+@keyframes shake {
+  0% {
+    transform: rotate(-5deg);
+  }
+  100% {
+    transform: rotate(5deg);
+  }
+}
+
+.shake {
+  font-size: 3rem !important;
+  animation: shake 0.25s linear infinite alternate;
 }
 
 //SASS
@@ -83,9 +123,10 @@ body {
   }
   .card {
     border: 3px solid $text-color;
-    margin-top: 10vh;
+    margin: 10vh auto;
     box-shadow: inset 0 0 25px 4px $text-color;
     display: flex;
+    max-width: 1000px;
   }
 }
 
@@ -102,18 +143,15 @@ body {
 }
 
 .panel.show {
-  border-color: lightcoral;
   flex: 1;
 }
 
 .hero {
+  transform: skew(10deg);
   .text {
     font-weight: bold;
     text-align: center;
-    font-size: 7rem;
-    line-height: 1;
-  }
-  span {
-    transition: all 0.5s linear;
+    font-size: 6rem;
+    padding: 15px 25px;
   }
 }
