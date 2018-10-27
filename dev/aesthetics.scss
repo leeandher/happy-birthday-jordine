@@ -1,9 +1,60 @@
 //Variables
-$bg: "./gallery/space.jpg";
+$bg: "./makeup/foundation.jpg";
+$font: "./makeup/eyeliner.ttf";
+$text-color: #fff;
+
+@font-face {
+  font-family: "Satisfy";
+  src: url($font) format("truetype"); /* Safari, Android, iOS */
+}
+
+//Animations
+@keyframes colorize {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+.colorize {
+  color: #00cccc;
+  animation: colorize 2s infinite forwards linear;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotateX(0deg);
+  }
+  100% {
+    transform: rotateX(360deg);
+  }
+}
+
+.spin {
+  animation: spin 3s infinite forwards cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes heart-beat {
+  0% {
+    color: #b82d50;
+    transform: scale(1);
+  }
+  100% {
+    color: palevioletred;
+    transform: scale(1.5);
+  }
+}
+.heart-beat {
+  color: palevioletred;
+  animation: heart-beat 1s infinite alternate cubic-bezier(1, 0.04, 0.51, 1.45);
+}
 
 //SASS
 * {
   box-sizing: border-box;
+  font-family: "Satisfy";
+  color: $text-color;
 }
 
 html,
@@ -16,30 +67,53 @@ body {
 .wrapper {
   margin: 0;
   padding: 0 15px;
-}
+  .bg {
+    width: 100%;
+    height: 100%;
 
-.bg {
-  width: 100%;
-  height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
 
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
+    background: url($bg) no-repeat center center;
+    background-size: cover;
 
-  background: url($bg) no-repeat center center;
-  background-size: cover;
-
-  transform: scale(1.1);
-  // transition: 0.3s ease;
-}
-
-.card {
-  border: 2px solid blue;
-  margin-top: 10vh;
+    transform: scale(1.1);
+  }
+  .card {
+    border: 3px solid $text-color;
+    margin-top: 10vh;
+    box-shadow: inset 0 0 25px 4px $text-color;
+    display: flex;
+  }
 }
 
 .panel {
   height: 80vh;
-  border: 2px solid red;
+  border-width: 0 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  flex: 0;
+  white-space: nowrap;
+  transition: 0.25s ease;
+}
+
+.panel.show {
+  border-color: lightcoral;
+  flex: 1;
+}
+
+.hero {
+  .text {
+    font-weight: bold;
+    text-align: center;
+    font-size: 7rem;
+    line-height: 1;
+  }
+  span {
+    transition: all 0.5s linear;
+  }
 }
