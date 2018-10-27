@@ -1,0 +1,28 @@
+{
+  "name": "happy-birthday-jordine",
+  "version": "1.0.0",
+  "description": "A special birthday wish! ❤❤",
+  "main": "index.js",
+  "scripts": {
+    "start": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leeandher/Happy-Birthday-Jordine.git"
+  },
+  "author": "Leander Rodrigues",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/leeandher/Happy-Birthday-Jordine/issues"
+  },
+  "homepage": "https://github.com/leeandher/Happy-Birthday-Jordine#readme",
+  "devDependencies": {
+    "browser-sync": "^2.26.3",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^6.0.0",
+    "gulp-load-plugins": "^1.5.0",
+    "gulp-pug": "^4.0.1",
+    "gulp-rename": "^1.4.0",
+    "gulp-sass": "^4.0.2"
+  }
+}
