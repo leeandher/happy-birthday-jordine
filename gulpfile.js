@@ -34,8 +34,13 @@ gulp.task("stylin", () => {
     .pipe(browserSync.stream());
 });
 
+gulp.task("codin", () => {
+  gulp.src("./happy/birthday/magic.js").pipe(browserSync.stream());
+});
+
 //Default task
 gulp.task("default", ["writin", "stylin", "nsync"], () => {
   gulp.watch("./dev/iloveevery.pug", ["writin"]);
   gulp.watch("./dev/aesthetics.scss", ["stylin"]);
+  gulp.watch("./happy/birthday/magic.js", ["codin"]);
 });
