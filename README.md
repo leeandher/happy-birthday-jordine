@@ -32,7 +32,6 @@ In case you want to get your hands dirty with making your own one of these guys,
 - Open up your terminal once its done (Win, 'cmd')
 - Use `ls` and `cd [folder-name]` to get to your unzipped copy of this stuff
 - Type `npm install` in the terminal (when you're in this folder)
-- Next, type `npm install -g gulp`
 - Then type `npm start`, it should open up a browser
 - Now you can go into the `./dev` folder and make changes to the following to change the card!
   - `aesthetics.scss`
