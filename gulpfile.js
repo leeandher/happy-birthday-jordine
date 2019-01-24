@@ -1,7 +1,7 @@
-const gulp = require("gulp");
-const p = require("gulp-load-plugins")();
+const gulp = require("gulp")
+const p = require("gulp-load-plugins")()
 
-const browserSync = require("browser-sync");
+const browserSync = require("browser-sync")
 
 // Start the server
 gulp.task("nsync", () => {
@@ -11,8 +11,8 @@ gulp.task("nsync", () => {
       baseDir: "./happy/birthday/",
       index: "jordine.html"
     }
-  });
-});
+  })
+})
 
 //Compile pug file
 gulp.task("writin", () => {
@@ -21,8 +21,8 @@ gulp.task("writin", () => {
     .pipe(p.rename("jordine.html"))
     .pipe(p.pug())
     .pipe(gulp.dest("./happy/birthday/"))
-    .pipe(browserSync.stream());
-});
+    .pipe(browserSync.stream())
+})
 
 //Compile sass file
 gulp.task("stylin", () => {
@@ -31,16 +31,19 @@ gulp.task("stylin", () => {
     .pipe(p.sass().on("error", p.sass.logError))
     .pipe(p.autoprefixer())
     .pipe(gulp.dest("./happy/birthday"))
-    .pipe(browserSync.stream());
-});
+    .pipe(browserSync.stream())
+})
 
 gulp.task("codin", () => {
-  gulp.src("./happy/birthday/magic.js").pipe(browserSync.stream());
-});
+  gulp.src("./happy/birthday/magic.js").pipe(browserSync.stream())
+})
 
 //Default task
-gulp.task("default", ["writin", "stylin", "nsync"], () => {
-  gulp.watch("./dev/iloveevery.pug", ["writin"]);
-  gulp.watch("./dev/aesthetics.scss", ["stylin"]);
-  gulp.watch("./happy/birthday/magic.js", ["codin"]);
-});
+gulp.task(
+  "default",
+  gulp.parallel("writin", "stylin", "nsync", () => {
+    gulp.watch("./dev/iloveevery.pug", gulp.parallel("writin"))
+    gulp.watch("./dev/aesthetics.scss", gulp.parallel("stylin"))
+    gulp.watch("./happy/birthday/magic.js", gulp.parallel("codin"))
+  })
+)
